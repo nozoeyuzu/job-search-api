@@ -19,11 +19,11 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Ensure executable permissions for scripts
-        run: chmod +x bin/*
+      - name: Install brakeman
+        run: gem install brakeman
 
-      - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+      - name: Run Brakeman
+        run: brakeman --no-pager
 
   lint:
     runs-on: ubuntu-latest
@@ -38,15 +38,18 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Ensure executable permissions for RuboCop script
+        run: chmod +x bin/rubocop
+
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: bundle exec rubocop -f github
 
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips sqlite3
+      - name: Install required packages
+        run: sudo apt-get update && sudo apt-get install -y google-chrome-stable libjemalloc2 libvips sqlite3
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -57,7 +60,10 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Ensure executable permissions for Rails script
+        run: chmod +x bin/rails
+
       - name: Run tests
         env:
           RAILS_ENV: test
-        run: bin/rails db:test:prepare test
+        run: bundle exec rails db:test:prepare test
