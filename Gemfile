@@ -52,7 +52,7 @@
 # end
 source "https://rubygems.org"
 
-ruby "3.3.6"
+ruby "3.2.6"
 
 # Railsバージョンの明示的な指定
 gem "rails", "~> 8.0.0"
