@@ -60,7 +60,7 @@ gem "rails", "~> 8.0.0"
 gem "sqlite3", "~> 2.5"
 
 # Puma Webサーバー
-gem "puma", "~> 6.5"
+gem "puma", "~> 6.6"
 
 # 必須のRailsコンポーネント
 gem "solid_cache"
