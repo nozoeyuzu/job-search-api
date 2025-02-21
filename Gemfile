@@ -57,7 +57,7 @@ ruby "3.2.6"
 gem "rails", "~> 8.0.0"
 
 # SQLite3のバージョン指定の調整（最新バージョンを使う場合問題ないはず）
-gem "sqlite3", "~> 2.5"
+gem "sqlite3", "~> 2.6"
 
 # Puma Webサーバー
 gem "puma", "~> 6.5"
