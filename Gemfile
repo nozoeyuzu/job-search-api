@@ -54,7 +54,7 @@ source "https://rubygems.org"
 ruby "3.2.6"
 
 # Railsバージョンの明示的な指定
-gem "rails", "~> 8.0.0"
+gem "rails", "~> 8.0.2"
 
 # SQLite3のバージョン指定の調整（最新バージョンを使う場合問題ないはず）
 gem "sqlite3", "~> 2.5"
